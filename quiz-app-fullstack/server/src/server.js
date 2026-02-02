@@ -6,6 +6,10 @@ const app = express();
 const prisma = new PrismaClient();
 const PORT = process.env.PORT || 5000;
 
+app.get('/', (req, res) => {
+  res.send('Quiz App Backend is running!');
+});
+
 // Middleware
 app.use(cors());
 app.use(express.json());
