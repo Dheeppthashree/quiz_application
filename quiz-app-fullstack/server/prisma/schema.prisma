@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(uuid())
+  name      String
+  createdAt DateTime  @default(now())
+  sessions  Session[]
+}
+
+model Session {
+  id             String    @id @default(uuid())
+  userId         String
+  user           User      @relation(fields: [userId], references: [id])
+  topicIds       String    // JSON string array of selected topic IDs
+  startedAt      DateTime  @default(now())
+  completedAt    DateTime?
+  totalScore     Int       @default(0)
+  totalQuestions Int       @default(0)
+  answers        Answer[]
+}
+
+model Answer {
+  id             String   @id @default(uuid())
+  sessionId      String
+  session        Session  @relation(fields: [sessionId], references: [id])
+  topicId        String
+  questionIndex  Int
+  selectedAnswer Int
+  correctAnswer  Int
+  isCorrect      Boolean
+  timestamp      DateTime @default(now())
+}

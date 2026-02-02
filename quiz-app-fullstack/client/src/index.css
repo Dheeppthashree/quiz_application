@@ -1,0 +1,420 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md rounded-2xl;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl font-bold text-white 
+    hover:from-blue-400 hover:to-purple-500 transition-all transform hover:scale-105 active:scale-95 shadow-lg border-2 border-white/20;
+  }
+
+  .option-btn {
+    @apply w-full p-4 rounded-xl text-left transition-all duration-200 border-2 border-white/40
+    hover:bg-white/80 hover:border-blue-500 flex items-center gap-4 bg-white/40 shadow-sm text-slate-800 font-medium;
+  }
+
+  .option-btn.selected {
+    @apply border-blue-600 bg-blue-100 text-blue-900;
+  }
+
+  .option-btn.correct {
+    @apply border-green-600 bg-green-100 text-green-900;
+  }
+
+  .option-btn.incorrect {
+    @apply border-red-600 bg-red-100 text-red-900;
+  }
+}
+
+:root {
+  --font-heading: 'Bangers', cursive;
+  --font-body: 'Fredoka', sans-serif;
+  
+  /* Zootopia Color Palette */
+  --zootopia-green: #10b981;
+  --zootopia-orange: #f97316;
+  --zootopia-blue: #3b82f6;
+  --zootopia-gold: #fbbf24;
+}
+
+body {
+  @apply min-h-screen overflow-x-hidden;
+  font-family: var(--font-body);
+  background: linear-gradient(135deg, #0ea5e9 0%, #10b981 50%, #f97316 100%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, .game-font {
+  font-family: var(--font-heading);
+  letter-spacing: 1px;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mirror for camera */
+.mirror {
+  transform: scaleX(-1);
+}
+
+/* Animations */
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes float-cloud {
+  0% { transform: translateX(-10vw); }
+  100% { transform: translateX(110vw); }
+}
+
+@keyframes run-across {
+  0% { left: -300px; transform: scaleX(1); }
+  49% { transform: scaleX(1); }
+  50% { left: 110vw; transform: scaleX(1); }
+  51% { transform: scaleX(-1); } /* Flip around */
+  99% { transform: scaleX(-1); }
+  100% { left: -300px; transform: scaleX(-1); }
+}
+
+@keyframes bounce-run {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-25px); }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+@keyframes sprite-run {
+  from { background-position: 0 0; }
+  to { background-position: 100% 0; }
+}
+
+@keyframes rocket-fly {
+  0% { transform: translate(-120vw, 20vh) rotate(10deg); }
+  100% { transform: translate(120vw, -20vh) rotate(10deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.8); }
+}
+
+.animate-sprite {
+  animation: sprite-run 0.5s steps(4) infinite;
+  background-size: 400% 100%;
+  background-repeat: no-repeat;
+}
+
+.animate-run {
+  animation: run-across 5s linear infinite;
+}
+
+.animate-rocket {
+  animation: rocket-fly 15s linear infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-cloud 40s linear infinite;
+}
+
+@keyframes wobble {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+.animate-wobble {
+  animation: wobble 2s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: float-cloud 25s linear infinite;
+}
+
+.animate-float-fast {
+  animation: float-cloud 15s linear infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.glass-morphism {
+    background: rgba( 255, 255, 255, 0.05 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+}
+
+/* Zootopia Animated Background Effects */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) translateX(10px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(10px) translateX(-10px) rotate(240deg);
+  }
+}
+
+@keyframes slide-down {
+  0% { transform: translateY(-100vh); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 15s ease-in-out infinite;
+}
+
+.animate-slide-down {
+  animation: slide-down 8s linear infinite;
+}
+
+.animate-scan-line {
+  animation: scan-line 6s linear infinite;
+}
+
+.bg-radial-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.3), transparent 70%);
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.05); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* Zootopia Character & Vehicle Animations */
+@keyframes vehicle-left {
+  0% { transform: translateX(-100vw); }
+  100% { transform: translateX(120vw); }
+}
+
+@keyframes vehicle-right {
+  0% { transform: translateX(120vw); }
+  100% { transform: translateX(-100vw); }
+}
+
+.animate-vehicle-left {
+  animation: vehicle-left 15s linear infinite;
+  font-size: 3rem;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+.animate-vehicle-right {
+  animation: vehicle-right 18s linear infinite;
+  font-size: 3rem;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-15deg); }
+  75% { transform: rotate(15deg); }
+}
+
+@keyframes sway {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  50% { transform: translateX(5px) rotate(2deg); }
+}
+
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes blink {
+  0%, 90%, 100% { opacity: 1; }
+  95% { opacity: 0; }
+}
+
+.animate-wave {
+  animation: wave 1.5s ease-in-out infinite;
+}
+
+.animate-sway {
+  animation: sway 3s ease-in-out infinite;
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 1s ease-in-out infinite;
+}
+
+.animate-blink {
+  animation: blink 4s ease-in-out infinite;
+}
+
+/* CINEMATIC ANIMATIONS */
+@keyframes subtle-breath {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+@keyframes blink-realistic {
+  0%, 95%, 100% { transform: scaleY(1); opacity: 1; }
+  97% { transform: scaleY(0.1); opacity: 0.5; }
+}
+
+@keyframes badge-shine {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(200%) rotate(45deg); }
+}
+
+@keyframes wave-arm {
+  0%, 100% { transform: rotate(-25deg); }
+  50% { transform: rotate(-45deg); }
+}
+
+@keyframes sway-arm {
+  0%, 100% { transform: rotate(20deg); }
+  50% { transform: rotate(10deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes rim-light {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.1); }
+}
+
+@keyframes bubble-in {
+  0% { transform: scale(0) rotate(-5deg); opacity: 0; }
+  60% { transform: scale(1.1) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.animate-subtle-breath {
+  animation: subtle-breath 3s ease-in-out infinite;
+}
+
+.animate-blink-realistic {
+  animation: blink-realistic 5s ease-in-out infinite;
+}
+
+.animate-badge-shine {
+  animation: badge-shine 2s ease-in-out infinite;
+}
+
+.animate-shine {
+  animation: shine 3s ease-in-out infinite;
+}
+
+.animate-wave-arm {
+  animation: wave-arm 2s ease-in-out infinite;
+}
+
+.animate-sway-arm {
+  animation: sway-arm 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.animate-rim-light {
+  animation: rim-light 5s ease-in-out infinite;
+}
+
+.animate-bubble-in {
+  animation: bubble-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+/* Cinematic Perspective */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Character Container Hover Effects */
+.character-container:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+/* Radial Gradient Utility */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+
+
+
