@@ -1,4 +1,5 @@
-const express = require('express');
+import express from 'express';
+
 const router = express.Router();
 
 // Hardcoded topics for simplicity (or moved from client)
@@ -15,4 +16,4 @@ router.get('/', (req, res) => {
   res.json(topics);
 });
 
-module.exports = router;
+export default router;

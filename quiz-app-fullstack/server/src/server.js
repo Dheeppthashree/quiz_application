@@ -1,8 +1,6 @@
-const express = require('express');
-const cors = require('cors');
-const { PrismaClient } = require('@prisma/client');
-const fs = require('fs');
-const path = require('path');
+import express from 'express';
+import cors from 'cors';
+import { PrismaClient } from '@prisma/client';
 
 const app = express();
 const prisma = new PrismaClient();
@@ -13,10 +11,9 @@ app.use(cors());
 app.use(express.json());
 
 // Load Routes
-// We will lazy-load or require them directly
-const sessionsRouter = require('./routes/sessions');
-const leaderboardRouter = require('./routes/leaderboard');
-const topicsRouter = require('./routes/topics');
+import sessionsRouter from './routes/sessions.js';
+import leaderboardRouter from './routes/leaderboard.js';
+import topicsRouter from './routes/topics.js';
 
 app.use('/api/sessions', sessionsRouter);
 app.use('/api/leaderboard', leaderboardRouter);
