@@ -11,14 +11,20 @@
     "prisma:migrate": "prisma migrate dev",
     "prisma:studio": "prisma studio"
   },
-  "keywords": ["quiz", "adtech", "express", "prisma"],
+  "keywords": [
+    "quiz",
+    "adtech",
+    "express",
+    "prisma"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
     "@prisma/client": "^5.22.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "serverless-http": "^4.0.0"
   },
   "devDependencies": {
     "prisma": "^5.22.0"
