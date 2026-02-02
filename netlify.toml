@@ -1,7 +1,7 @@
 [build]
-  command = "npm run build"
+  command = "cd quiz-app-fullstack/client && npm install && npm run build"
   publish = "quiz-app-fullstack/client/dist"
-  functions = "quiz-app-fullstack/server/src/functions"
+  functions = "quiz-app-fullstack/server"
 
 [functions]
   node_bundler = "esbuild"
