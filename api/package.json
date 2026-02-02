@@ -1,0 +1,8 @@
+{
+  "name": "adtech-quiz-api",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@prisma/client": "^5.22.0"
+  }
+}

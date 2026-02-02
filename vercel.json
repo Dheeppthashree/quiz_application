@@ -7,9 +7,21 @@
       "config": {
         "distDir": "dist"
       }
+    },
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
+    {
+      "src": "/api/sessions/([^/]+)/answers",
+      "dest": "/api/sessions/[id]/answers.js"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1.js"
+    },
     {
       "handle": "filesystem"
     },
@@ -17,5 +29,8 @@
       "src": "/(.*)",
       "dest": "/quiz-app-fullstack/client/dist/index.html"
     }
-  ]
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
 }
